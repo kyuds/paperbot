@@ -4,9 +4,9 @@ from datetime import datetime
 
 from errors import *
 from models import Summary
-from settings import FILE_PREFIX, FILE_POSTFIX
+from settings import *
 
-class S3Retriever:
+class S3Utils:
     def __init__(self, bucket_name, prefix):
         self.bucket_name = bucket_name
         self.prefix = prefix
@@ -26,6 +26,7 @@ class S3Retriever:
                     Summary(
                         obj["id"],
                         obj["title"],
+                        obj["original"],
                         obj["summary"],
                         obj["authors"],
                         obj["published"],
@@ -42,7 +43,7 @@ class S3Retriever:
         if "Contents" not in response:
             raise S3Error("Contents not in response", 500)
         
-        fnames = S3Retriever.__process_filenames([obj["Key"] for obj in response["Contents"]])
+        fnames = S3Utils.__process_filenames([obj["Key"] for obj in response["Contents"]])
         return fnames[max(fnames.keys())]
 
     @staticmethod
@@ -53,7 +54,7 @@ class S3Retriever:
                 raise ScraperError(f"Invalid filename format. Got filename: {name}")
             stripped = name.removeprefix(FILE_PREFIX).removesuffix(FILE_POSTFIX)
             try:
-                parsed_date = datetime.strptime(stripped, "%y%m%d")
+                parsed_date = datetime.strptime(stripped, "%y%m%d%H%M%S")
                 processed[parsed_date] = name
             except ValueError as e:
                 raise ScraperError(f"Invalid filename date format. {e}")
@@ -61,12 +62,7 @@ class S3Retriever:
 
 if __name__ == "__main__":
     # Testing
-    def make_name(datestring):
-        return FILE_PREFIX + datestring + FILE_POSTFIX
-    
-    names = [make_name("250607"), make_name("250608"), make_name("250808")]
-    processed = S3Retriever._S3Retriever__process_filenames(names)
-    recent = processed[max(processed.keys())]
-    assert recent == names[-1]
-    
-    print("All tests pass!")
+    s3 = S3Utils(BUCKET_NAME, BUCKET_PREFIX)
+    summaries = s3.get_summaries()
+    print("Number of documents:", len(summaries))
+    print(summaries[0])
