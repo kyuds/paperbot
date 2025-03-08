@@ -19,3 +19,6 @@ stop-server:
 
 clear-cache:
     rm -rf ~/.letta/.persist/{{project}}
+
+run:
+    python main.py
