@@ -10,7 +10,6 @@ from models import Summary
 
 class HybridRetriever:
     """
-    Dense/sparse retriever also backed with LLM reranking.
     Dense/sparse retrieval serves to retrieve K candidates out of around 150
     LLM reranking will rank the K candidates and will use the top N outputs.
     """
