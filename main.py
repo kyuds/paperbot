@@ -2,11 +2,11 @@ from agent import PaperBot
 from errors import BaseError
 
 def main():
-    bot = PaperBot("bot")
+    bot = PaperBot("bot", verbose=True)
     recommendations = bot.suggest()
     print("Recommended:")
     for s in recommendations:
-        print(s + "\n")
+        print(f"{s}\n")
     
     feedback = input("Do you want to give feedback? [yes/no]: ")
     if feedback == "yes":

@@ -55,9 +55,10 @@ class PaperBot:
     LLM Agent created by Letta to provide user-personalized queries and 
     personalized LLM reranking.
     """
-    def __init__(self, name: str):
+    def __init__(self, name: str, verbose: bool = False):
         assert len(name) > 0, "name of agent should not be empty"
         name = "PAPERBOT_" + name
+        self.verbose = verbose
         self.client = Letta(base_url=LETTA_URL)
         self.agent_id = self.__get_agent_id(name)
         self.retriever = HybridRetriever(S3Utils().get_summaries())
@@ -67,7 +68,10 @@ class PaperBot:
         found = self.client.agents.list(name=name)
         assert len(found) <= 1, "there are more than two agents of the same name found"
         if len(found) == 1:
-            return found[0].id
+            id = found[0].id
+            if self.verbose:
+                print(f"Successfully found agent: {id}")
+            return id
         
         # create agent and return id if the agent name was not found
         created = self.client.agents.create(
@@ -85,6 +89,8 @@ class PaperBot:
             model="openai/gpt-4o-mini",
             embedding="openai/text-embedding-ada-002",
         )
+        if self.verbose:
+            print(f"Successfully created agent: {created.id}")
         return created.id
     
     # TODO: use k dynamically
@@ -99,7 +105,10 @@ class PaperBot:
                 ),
             ],
         )
-        query = response[-1].content
+        if self.verbose:
+            for message in response.messages:
+                print(f"Query Response: {message}\n")
+        query = response.messages[-1].content
 
         # step 2: query
         filtered = self.retriever.retrieve(query)
@@ -115,7 +124,10 @@ class PaperBot:
                 ),
             ],
         )
-        results = response[-1].content
+        if self.verbose:
+            for message in response.messages:
+                print(f"Top 5 Response: {message}\n")
+        results = response.messages[-1].content
 
         # step 4: return results
         ret = []
@@ -132,7 +144,7 @@ class PaperBot:
         return ret
 
     def feedback(self, feedback: str):
-        self.client.agents.messages.create(
+        response = self.client.agents.messages.create(
             agent_id=self.agent_id,
             messages=[
                 MessageCreate(
@@ -141,6 +153,9 @@ class PaperBot:
                 ),
             ],
         )
+        if self.verbose:
+            for message in response.messages:
+                print(f"Feedback Response: {message}\n")
 
     @staticmethod
     def __format(summaries: List[Summary]) -> str:
