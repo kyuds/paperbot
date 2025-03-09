@@ -28,4 +28,4 @@ class Summary:
         self.link = link
 
     def __repr__(self):
-        return self.title
+        return self.title + "\n\n" + self.original + "\n\n" + self.link

@@ -1,17 +1,19 @@
-from s3utils import S3Utils
-from retriever import HybridRetriever
-from models import Summary
-from errors import *
-from settings import *
+from agent import PaperBot
+from errors import BaseError
 
 def main():
-    query = "llm agent systems and information retrieval"
-    summaries = S3Utils().get_summaries()
-    retriever = HybridRetriever(summaries)
-    filtered = retriever.retrieve(query)
-
-    for s in filtered:
-        print(s)
+    bot = PaperBot("bot")
+    recommendations = bot.suggest()
+    print("Recommended:")
+    for s in recommendations:
+        print(s + "\n")
+    
+    feedback = input("Do you want to give feedback? [yes/no]: ")
+    if feedback == "yes":
+        contents = input("Please give feedback: ")
+        bot.feedback(contents)
+    else:
+        print("you chose to not give feedback")
 
 if __name__ == "__main__":
     main()

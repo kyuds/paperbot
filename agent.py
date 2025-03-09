@@ -87,6 +87,7 @@ class PaperBot:
         )
         return created.id
     
+    # TODO: use k dynamically
     def suggest(self, k: int = 5) -> List[Summary]:
         # step 1: generate query
         response = self.client.agents.messages.create(
