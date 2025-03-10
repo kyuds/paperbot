@@ -24,8 +24,18 @@ machine learning.
 
 QUERY_PROMPT="""
 Construct a query string that will be used to search a database of recent machine learning papers. Make sure that 
-the query string is aligned with the user's interests and historic feedback (if any). For the returned user message, 
-respond with the query string only. You are free to reason about creating the query string. 
+the query string is aligned with the user's interests and historic feedback (if any). Your output query will be used 
+with a sentence embedding model to find semantically similar paragraphs. This is NOT a keyword search or SQL database, 
+the database of papers is searched by using vector similarity in embedding space. 
+
+To generate an effective query, follow the guidelines:
+- Relevant synonyms
+- Related concepts
+- Alternative phrasings
+- Specific aspects of the topic
+- Contextually relevant terms
+
+For the returned user message, respond with the query string ONLY. You are free to reason about creating the query string. 
 """
 
 SUMMARY_PROMPT="""
