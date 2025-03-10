@@ -103,7 +103,6 @@ class PaperBot:
             print(f"Successfully created agent: {created.id}")
         return created.id
     
-    # TODO: use n dynamically
     def suggest(self, n: int = 5, top_k: int = 15) -> List[Summary]:
         """
         Make the Letta agent query relevant papers can conduct a final reranking of papers to
