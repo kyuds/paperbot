@@ -2,7 +2,7 @@
 Using LLM agents for paper suggestions
 
 ### Running
-Please look at `sample-run.txt` to see the bot in operation.
+Please look at `sample-run-1.txt` and `sample-run-2.txt` to see the bot in operation. `sample-run-2.txt` is the same bot that ran the second time after the feedback was given that biology-related papers are to be excluded.
 ```
 just run
 ```

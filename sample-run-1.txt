@@ -1,0 +1,60 @@
+(letta) kyuds@kyuds paperbot % just run
+python main.py
+Successfully found agent: agent-73f44d42-0d08-4708-b1cf-da34a3db3667
+Batches: 100%|████████████████████████████████████| 7/7 [00:02<00:00,  2.61it/s]
+Query Response: id='message-cec9e92e-8756-4048-a369-35c96a18f934' date=datetime.datetime(2025, 3, 10, 12, 40, 32, tzinfo=TzInfo(UTC)) message_type='reasoning_message' reasoning='Creating a query string for a vector similarity search, considering synonyms and related concepts in agent systems and prompt engineering.'
+
+Query Response: id='message-cec9e92e-8756-4048-a369-35c96a18f934' date=datetime.datetime(2025, 3, 10, 12, 40, 32, tzinfo=TzInfo(UTC)) message_type='assistant_message' content='"large language models, agent systems, prompt engineering, interactive AI, AI collaboration, human-AI interaction, information retrieval frameworks, intelligent prompting, adaptive prompting techniques"'
+
+Top 5 Response: id='message-d9ec3180-2f0e-4c84-820c-e7252035f198' date=datetime.datetime(2025, 3, 10, 12, 40, 36, tzinfo=TzInfo(UTC)) message_type='reasoning_message' reasoning="Now selecting the 5 most relevant papers focusing on Daniel's interests, especially in prompt engineering and agent systems."
+
+Top 5 Response: id='message-d9ec3180-2f0e-4c84-820c-e7252035f198' date=datetime.datetime(2025, 3, 10, 12, 40, 36, tzinfo=TzInfo(UTC)) message_type='assistant_message' content='1 3 6 7 8'
+
+Recommended:
+Prompt Programming: A Platform for Dialogue-based Computational Problem Solving with Generative AI Models
+
+Computing students increasingly rely on generative AI tools for programming assistance, often without formal instruction or guidance. This highlights a need to teach students how to effectively interact with AI models, particularly through natural language prompts, to generate and critically evaluate code for solving computational tasks. To address this, we developed a novel platform for prompt programming that enables authentic dialogue-based interactions, supports problems involving multiple interdependent functions, and offers on-request execution of generated code. Data analysis from over 900 students in an introductory programming course revealed high engagement, with the majority of prompts occurring within multi-turn dialogues. Problems with multiple interdependent functions encouraged iterative refinement, with progression graphs highlighting several common strategies. Students were highly selective about the code they chose to test, suggesting that on-request execution of generated code promoted critical thinking. Given the growing importance of learning dialogue-based programming with AI, we provide this tool as a publicly accessible resource, accompanied by a corpus of programming problems for educational use.
+
+http://arxiv.org/abs/2503.04267v1
+
+Measuring temporal effects of agent knowledge by date-controlled tool use
+
+Temporal progression is an integral part of knowledge accumulation and update. Web search is frequently adopted as grounding for agent knowledge, yet its inappropriate configuration affects the quality of agent responses. Here, we construct a tool-based out-of-sample testing framework to measure the knowledge variability of large language model (LLM) agents from distinct date-controlled tools (DCTs). We demonstrate the temporal effects of an LLM agent as a writing assistant, which can use web search to help complete scientific publication abstracts. We show that temporal effects of the search engine translates into tool-dependent agent performance but can be alleviated with base model choice and explicit reasoning instructions such as chain-of-thought prompting. Our results indicate that agent evaluation should take a dynamical view and account for the temporal influence of tools and the updates of external resources.
+
+http://arxiv.org/abs/2503.04188v1
+
+Biological Sequence with Language Model Prompting: A Survey
+
+Large Language models (LLMs) have emerged as powerful tools for addressing challenges across diverse domains. Notably, recent studies have demonstrated that large language models significantly enhance the efficiency of biomolecular analysis and synthesis, attracting widespread attention from academics and medicine. In this paper, we systematically investigate the application of prompt-based methods with LLMs to biological sequences, including DNA, RNA, proteins, and drug discovery tasks. Specifically, we focus on how prompt engineering enables LLMs to tackle domain-specific problems, such as promoter sequence prediction, protein structure modeling, and drug-target binding affinity prediction, often with limited labeled data. Furthermore, our discussion highlights the transformative potential of prompting in bioinformatics while addressing key challenges such as data scarcity, multimodal fusion, and computational resource limitations. Our aim is for this paper to function both as a foundational primer for newcomers and a catalyst for continued innovation within this dynamic field of study.
+
+http://arxiv.org/abs/2503.04135v1
+
+ToolFuzz -- Automated Agent Tool Testing
+
+Large Language Model (LLM) Agents leverage the advanced reasoning capabilities of LLMs in real-world applications. To interface with an environment, these agents often rely on tools, such as web search or database APIs. As the agent provides the LLM with tool documentation along the user query, the completeness and correctness of this documentation is critical. However, tool documentation is often over-, under-, or ill-specified, impeding the agent's accuracy. Standard software testing approaches struggle to identify these errors as they are expressed in natural language. Thus, despite its importance, there currently exists no automated method to test the tool documentation for agents. To address this issue, we present ToolFuzz, the first method for automated testing of tool documentations. ToolFuzz is designed to discover two types of errors: (1) user queries leading to tool runtime errors and (2) user queries that lead to incorrect agent responses. ToolFuzz can generate a large and diverse set of natural inputs, effectively finding tool description errors at a low false positive rate. Further, we present two straightforward prompt-engineering approaches. We evaluate all three tool testing approaches on 32 common LangChain tools and 35 newly created custom tools and 2 novel benchmarks to further strengthen the assessment. We find that many publicly available tools suffer from underspecification. Specifically, we show that ToolFuzz identifies 20x more erroneous inputs compared to the prompt-engineering approaches, making it a key component for building reliable AI agents.
+
+http://arxiv.org/abs/2503.04479v1
+
+HEISIR: Hierarchical Expansion of Inverted Semantic Indexing for Training-free Retrieval of Conversational Data using LLMs
+
+The growth of conversational AI services has increased demand for effective information retrieval from dialogue data. However, existing methods often face challenges in capturing semantic intent or require extensive labeling and fine-tuning. This paper introduces HEISIR (Hierarchical Expansion of Inverted Semantic Indexing for Retrieval), a novel framework that enhances semantic understanding in conversational data retrieval through optimized data ingestion, eliminating the need for resource-intensive labeling or model adaptation. HEISIR implements a two-step process: (1) Hierarchical Triplets Formulation and (2) Adjunct Augmentation, creating semantic indices consisting of Subject-Verb-Object-Adjunct (SVOA) quadruplets. This structured representation effectively captures the underlying semantic information from dialogue content. HEISIR achieves high retrieval performance while maintaining low latency during the actual retrieval process. Our experimental results demonstrate that HEISIR outperforms fine-tuned models across various embedding types and language models. Beyond improving retrieval capabilities, HEISIR also offers opportunities for intent and topic analysis in conversational data, providing a versatile solution for dialogue systems.
+
+http://arxiv.org/abs/2503.04141v1
+
+Do you want to give feedback? [yes/no]: yes
+Please give feedback: I don't want biology-related papers. 
+Feedback Response: id='message-5b8c01e0-a0ae-4681-bd0b-30378ec8392e' date=datetime.datetime(2025, 3, 10, 12, 41, 18, tzinfo=TzInfo(UTC)) message_type='reasoning_message' reasoning="Updating Daniel's preferences to exclude biology-related papers based on his feedback."
+
+Feedback Response: id='message-5b8c01e0-a0ae-4681-bd0b-30378ec8392e' date=datetime.datetime(2025, 3, 10, 12, 41, 18, tzinfo=TzInfo(UTC)) message_type='tool_call_message' tool_call=ToolCall(name='core_memory_replace', arguments='{\n  "label": "human",\n  "old_content": "Daniel has interests in machine learning topics such as LLM agent systems and information retrieval. He is NOT interested in computational biology or physics.",\n  "new_content": "Daniel has interests in machine learning topics such as LLM agent systems and information retrieval. He is NOT interested in computational biology, biology-related papers, or physics.",\n  "request_heartbeat": true\n}', tool_call_id='call_Aze4YbSh6elvkEfgQyy3kJbk')
+
+Feedback Response: id='message-f8a7bffb-cd14-4abf-a99d-6e48c59c6b96' date=datetime.datetime(2025, 3, 10, 12, 41, 18, tzinfo=TzInfo(UTC)) message_type='tool_return_message' tool_return="Error executing function core_memory_replace: ValueError: Old content 'Daniel has interests in machine learning topics such as LLM agent systems and information retrieval. He is NOT interested in computational biology or physics.' not found in memory block 'human'" status='error' tool_call_id='call_Aze4YbSh6elvkEfgQyy3kJbk' stdout=None stderr=None
+
+Feedback Response: id='message-445d2eca-f7a4-4d82-a285-cbd79fed5c1b' date=datetime.datetime(2025, 3, 10, 12, 41, 21, tzinfo=TzInfo(UTC)) message_type='reasoning_message' reasoning="Feedback received about excluding biology-related papers. I need to ensure this is represented in Daniel's preferences."
+
+Feedback Response: id='message-445d2eca-f7a4-4d82-a285-cbd79fed5c1b' date=datetime.datetime(2025, 3, 10, 12, 41, 21, tzinfo=TzInfo(UTC)) message_type='tool_call_message' tool_call=ToolCall(name='core_memory_append', arguments='{\n  "label": "human",\n  "content": "Daniel does NOT want biology-related papers in future recommendations.",\n  "request_heartbeat": true\n}', tool_call_id='call_ZDTdVXrbqGujRZolhWo0G21l')
+
+Feedback Response: id='message-546ab3f4-6825-42b7-aafc-98210de718c7' date=datetime.datetime(2025, 3, 10, 12, 41, 21, tzinfo=TzInfo(UTC)) message_type='tool_return_message' tool_return='None' status='success' tool_call_id='call_ZDTdVXrbqGujRZolhWo0G21l' stdout=None stderr=None
+
+Feedback Response: id='message-24618b00-7642-4a46-a341-d35e8cce2150' date=datetime.datetime(2025, 3, 10, 12, 41, 24, tzinfo=TzInfo(UTC)) message_type='reasoning_message' reasoning='Feedback has been successfully incorporated. I can now continue providing personalized recommendations without including biology-related papers.'
+
+Feedback Response: id='message-24618b00-7642-4a46-a341-d35e8cce2150' date=datetime.datetime(2025, 3, 10, 12, 41, 24, tzinfo=TzInfo(UTC)) message_type='assistant_message' content="Thank you for your feedback! I've noted your preference to exclude biology-related papers in future recommendations. Let's keep focusing on what interests you!"
