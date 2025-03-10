@@ -39,9 +39,9 @@ For the returned user message, respond with the query string ONLY. You are free 
 """
 
 SUMMARY_PROMPT="""
-Your generated query was used to retrieve 15 paper candidates for recommendation. As the final step, look at the 15 
-paper title and abstract and determine the 5 MOST RELEVANT paper to the user's interest and preference. For the 
-returned user message, respond with 5 numbers, each corresponding to the paper's ID, separated by a single space.
+Your generated query was used to retrieve {k_papers} paper candidates for recommendation. As the final step, look at 
+the {k_papers} paper titles and abstracts and determine the {n_papers} MOST RELEVANT paper to the user's interest and preference. 
+For the returned user message, respond with {n_papers} numbers, each corresponding to the paper's ID, separated by a single space.
 You are free to reason about the selection process.
 
 Format:
@@ -103,8 +103,18 @@ class PaperBot:
             print(f"Successfully created agent: {created.id}")
         return created.id
     
-    # TODO: use k dynamically
-    def suggest(self, k: int = 5) -> List[Summary]:
+    # TODO: use n dynamically
+    def suggest(self, n: int = 5, top_k: int = 15) -> List[Summary]:
+        """
+        Make the Letta agent query relevant papers can conduct a final reranking of papers to
+        suggest the most relevant machine learning papers for the user.
+
+        Parameters:
+        - n: number of papers to output
+        - top_k: number of papers for the output of the retrieval process.
+        """
+        assert n <= top_k, "requesting more documents than preliminary filter"
+
         # step 1: generate query
         response = self.client.agents.messages.create(
             agent_id=self.agent_id,
@@ -121,7 +131,7 @@ class PaperBot:
         query = response.messages[-1].content
 
         # step 2: query
-        filtered = self.retriever.retrieve(query)
+        filtered = self.retriever.retrieve(query, top_k=top_k)
         formatted = PaperBot.__format(filtered)
 
         # step 3: prompt the agent to return top 5
@@ -130,7 +140,7 @@ class PaperBot:
             messages=[
                 MessageCreate(
                     role="user",
-                    content=SUMMARY_PROMPT + "\n\n" + formatted
+                    content=f"{SUMMARY_PROMPT.format(k_papers=top_k, n_papers=n)}" + "\n\n" + formatted
                 ),
             ],
         )

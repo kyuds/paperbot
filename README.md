@@ -10,5 +10,5 @@ just run
 
 ### TODO
 - [ ] Feedback in form of numeric scores, not descriptions. Providing descriptions is too much work for the user.
-- [ ] Ability to fluently control the number of papers returned (currently fixed to 5).
+- [X] Ability to fluently control the number of papers returned (currently fixed to 5).
 - [ ] Create Terraform system for cloud deployment.
